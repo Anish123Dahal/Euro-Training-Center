@@ -59,7 +59,9 @@ const Home = () => {
               </div>
 
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-white leading-[1.1] tracking-tight">
-                Empowering Skills. <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-orange-500">
+                  Empowering Skills.
+                </span> <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-green-300 to-primary">
                   Creating Careers.
                 </span>

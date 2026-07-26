@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  /* Pure Vibrant Green Palette */
+  --color-primary: #16A34A; 
+  --color-primary-hover: #15803d;
+  --color-primary-light: #22c55e;
+
+  /* Emerald / Green Secondary Highlight (No Red) */
+  --color-secondary: #10b981;
+  --color-secondary-hover: #059669;
+
+  /* Clean Off-White Surface (No Cool/Navy Slate Tint) */
+  --color-surface: #F7F8F8;
+
+  /* Pure Neutral Charcoal Palette (Soft Matte Charcoal, No Black) */
+  --color-dark: #2B2D31; /* Soft Charcoal */
+  --color-charcoal: #2B2D31; /* Soft Charcoal */
+  --color-charcoal-dark: #232428; /* Deep Charcoal */
+  --color-charcoal-light: #35373C; /* Light Charcoal */
+  --color-charcoal-border: #3F4147; /* Charcoal Border */
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+:root {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-dark);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Base styles for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Background Grid Design System */
+.bg-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.bg-grid-pattern-dark {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+

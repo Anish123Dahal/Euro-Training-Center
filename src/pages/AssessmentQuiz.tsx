@@ -1,0 +1,263 @@
+import { useState, ReactNode } from 'react';
+import { CheckCircle, RotateCcw, BookOpen, Zap, DollarSign, Laptop, Coffee, Users, Brain, BarChart3, Globe, Sprout, Smartphone, Rocket, GraduationCap, Target, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+interface Question {
+  id: number;
+  question: string;
+  subtitle: string;
+  options: {
+    label: string;
+    icon: ReactNode;
+    points: Record<string, number>; // categorizing: 'ai', 'freelance', 'tech', 'vocational'
+  }[];
+}
+
+const AssessmentQuiz = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [scores, setScores] = useState<Record<string, number>>({ ai: 0, freelance: 0, tech: 0, vocational: 0 });
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const questions: Question[] = [
+    {
+      id: 1,
+      question: "What is your primary career goal for 2026?",
+      subtitle: "Choose the statement that resonates most with your immediate ambitions.",
+      options: [
+        { label: "Boost workplace productivity with AI tools & automate reports", icon: <Zap className="w-5 h-5 text-primary" />, points: { ai: 3, tech: 1 } },
+        { label: "Earn remote income in USD working with global clients online", icon: <DollarSign className="w-5 h-5 text-primary" />, points: { freelance: 3, ai: 1 } },
+        { label: "Build software, web applications & master coding languages", icon: <Laptop className="w-5 h-5 text-primary" />, points: { tech: 3 } },
+        { label: "Master hands-on skills in early education, culinary arts or barista hospitality", icon: <Coffee className="w-5 h-5 text-primary" />, points: { vocational: 3 } },
+      ]
+    },
+    {
+      id: 2,
+      question: "How do you prefer to spend your working hours?",
+      subtitle: "Select your comfort zone regarding work environments.",
+      options: [
+        { label: "Collaborating in a dynamic classroom, busy cafe, or corporate office", icon: <Users className="w-5 h-5 text-primary" />, points: { vocational: 2, ai: 1 } },
+        { label: "Independently solving logic puzzles and designing software architecture", icon: <Brain className="w-5 h-5 text-primary" />, points: { tech: 3, freelance: 1 } },
+        { label: "Crafting digital content, ChatGPT prompts & analyzing business Excel data", icon: <BarChart3 className="w-5 h-5 text-primary" />, points: { ai: 3, freelance: 2 } },
+        { label: "Managing overseas freelance gigs on Upwork and Fiverr from home", icon: <Globe className="w-5 h-5 text-primary" />, points: { freelance: 3, tech: 1 } },
+      ]
+    },
+    {
+      id: 3,
+      question: "What is your current computer & technical background?",
+      subtitle: "Be honest! We have beginner-friendly to advanced programs.",
+      options: [
+        { label: "Beginner: I know basic web browsing and typing", icon: <Sprout className="w-5 h-5 text-primary" />, points: { ai: 2, vocational: 2 } },
+        { label: "Intermediate: Comfortable with MS Office, email, and basic tools", icon: <Smartphone className="w-5 h-5 text-primary" />, points: { ai: 3, freelance: 2 } },
+        { label: "Technical: I have exposure to programming or digital marketing", icon: <Rocket className="w-5 h-5 text-primary" />, points: { tech: 3, freelance: 2 } },
+        { label: "Educator / Professional: Looking to upgrade traditional career with smart tech", icon: <GraduationCap className="w-5 h-5 text-primary" />, points: { ai: 3, vocational: 1 } },
+      ]
+    },
+    {
+      id: 4,
+      question: "How much time can you commit to career training each week?",
+      subtitle: "Euro Training Center offers flexible Morning, Day, and Evening shifts.",
+      options: [
+        { label: "Fast-Track (4 to 6 weeks): Intensive quick skill boost", icon: <Zap className="w-5 h-5 text-primary" />, points: { ai: 3, vocational: 2 } },
+        { label: "Comprehensive (2 to 3 months): Deep dive into freelancing or digital skills", icon: <Target className="w-5 h-5 text-primary" />, points: { freelance: 3, ai: 2 } },
+        { label: "Full Transformation (5 to 6 months): Complete Job Guarantee & Internship Program", icon: <Award className="w-5 h-5 text-primary" />, points: { tech: 3, freelance: 2 } },
+      ]
+    }
+  ];
+
+  const handleSelectOption = (points: Record<string, number>) => {
+    const newScores = { ...scores };
+    Object.keys(points).forEach(key => {
+      newScores[key] = (newScores[key] || 0) + points[key];
+    });
+    setScores(newScores);
+
+    if (currentStep < questions.length - 1) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      setIsCompleted(true);
+    }
+  };
+
+  const restartQuiz = () => {
+    setCurrentStep(0);
+    setScores({ ai: 0, freelance: 0, tech: 0, vocational: 0 });
+    setIsCompleted(false);
+  };
+
+  // Determine top score category
+  const getResult = () => {
+    let topCategory = 'ai';
+    let maxScore = -1;
+    Object.entries(scores).forEach(([cat, score]) => {
+      if (score > maxScore) {
+        maxScore = score;
+        topCategory = cat;
+      }
+    });
+
+    const recommendations: Record<string, { title: string; badge: string; desc: string; courses: string[] }> = {
+      ai: {
+        title: "Artificial Intelligence & Office Transformation",
+        badge: "AI & Productivity Specialist",
+        desc: "Your answers show a strong motivation to modernize daily workflows and lead in 2026. Mastering ChatGPT, prompt engineering, Excel Copilot, and business automation will multiply your professional output.",
+        courses: ["Basic to Advanced Artificial Intelligence (AI)", "AI for Office Professionals", "Microsoft Office & Corporate Productivity"]
+      },
+      freelance: {
+        title: "Global Freelancing & Online Earning (USD)",
+        badge: "Remote Digital Earner",
+        desc: "You thrive on independence, financial freedom, and digital entrepreneurship. Our specialized freelancing training equips you with portfolio creation, international pricing models, and direct high-ticket conversion on Upwork and Fiverr.",
+        courses: ["Global Freelancing & Online Earning", "Digital Marketing & Social Media Pro", "Graphic Design, Branding & Video Editing"]
+      },
+      tech: {
+        title: "Full-Stack Software & Web Development",
+        badge: "Future Software Engineer",
+        desc: "You enjoy logical problem-solving and building scalable tech architectures. Our intensive development track teaches React, Python, cloud databases, and places you directly into high-paying IT company internships.",
+        courses: ["Web & Software Development (React, Python & DBs)", "Data Analytics with Power BI, SQL & Python", "Cyber Security & Ethical Hacking Basics"]
+      },
+      vocational: {
+        title: "Professional Hospitality & Modern Teacher Training",
+        badge: "Industry Certified Pro",
+        desc: "You excel in engaging social environments and hands-on operational excellence. Our commercial labs in Samakhusi provide international-standard Barista calibrations, Montessori ECCD child psychology, and hotel management protocols.",
+        courses: ["Professional Barista, Bakery & Culinary Arts", "Montessori & ECCD Teacher Training (Smart Class)", "Business Accounting (Tally, Tax), Sales & Leadership"]
+      }
+    };
+
+    return recommendations[topCategory] || recommendations['ai'];
+  };
+
+  const resultData = isCompleted ? getResult() : null;
+
+  return (
+    <div className="pb-16 min-h-screen bg-[#F7F8F8] bg-grid-pattern">
+      {/* Header Banner - Soft Charcoal */}
+      <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white py-12 sm:py-14 mb-12 border-b border-[#3F4147] text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="bg-[#35373C] text-primary border border-primary/50 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-4">
+            2026 Career Diagnostic Tool
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mb-4 tracking-tight">
+            Career Assessment Quiz
+          </h1>
+          <p className="text-neutral-300 text-sm sm:text-base max-w-2xl mx-auto">
+            Not sure which course best suits your skillset? Answer 4 quick questions and our diagnostic engine will match you with your ideal professional transformation program.
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        {!isCompleted ? (
+          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-neutral-200">
+            {/* Progress Bar */}
+            <div className="mb-8">
+              <div className="flex justify-between text-xs font-extrabold text-[#2B2D31] mb-2">
+                <span>Question {currentStep + 1} of {questions.length}</span>
+                <span>{Math.round(((currentStep + 1) / questions.length) * 100)}% Complete</span>
+              </div>
+              <div className="w-full bg-neutral-200 h-2 rounded-full overflow-hidden">
+                <div 
+                  className="bg-primary h-full transition-all duration-300"
+                  style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+                ></div>
+              </div>
+            </div>
+
+            {/* Question */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-heading font-extrabold text-[#2B2D31] mb-2">
+                {questions[currentStep].question}
+              </h2>
+              <p className="text-xs sm:text-sm text-neutral-500 font-medium">
+                {questions[currentStep].subtitle}
+              </p>
+            </div>
+
+            {/* Options */}
+            <div className="space-y-4">
+              {questions[currentStep].options.map((option, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleSelectOption(option.points)}
+                  className="w-full text-left p-5 rounded-2xl bg-[#F7F8F8] border border-neutral-200 hover:border-primary hover:bg-green-50/50 transition-all flex items-center justify-between group shadow-xs"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="p-2.5 rounded-xl bg-white border border-neutral-200 flex-shrink-0">
+                      {option.icon}
+                    </span>
+                    <span className="text-sm font-extrabold text-[#2B2D31] group-hover:text-primary transition-colors leading-relaxed">
+                      {option.label}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          /* Result Showcase */
+          resultData && (
+            <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-[#3F4147] text-center space-y-8">
+              <div className="w-16 h-16 bg-primary/20 border-2 border-primary rounded-3xl mx-auto flex items-center justify-center text-primary shadow-md">
+                <CheckCircle className="w-9 h-9" />
+              </div>
+
+              <div className="space-y-3">
+                <span className="bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest inline-block shadow-xs">
+                  {resultData.badge}
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-heading font-extrabold text-white">
+                  {resultData.title}
+                </h2>
+                <p className="text-neutral-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium pt-2">
+                  {resultData.desc}
+                </p>
+              </div>
+
+              <div className="bg-[#35373C] p-6 rounded-2xl border border-[#3F4147] text-left space-y-3">
+                <span className="text-xs font-bold text-primary uppercase tracking-widest block flex items-center gap-1.5">
+                  <BookOpen className="w-4 h-4" /> Top Recommended Programs For You:
+                </span>
+                <div className="grid grid-cols-1 gap-2.5">
+                  {resultData.courses.map((course, i) => (
+                    <div key={i} className="bg-[#2B2D31] p-3.5 rounded-xl border border-[#3F4147] flex items-center justify-between">
+                      <span className="text-sm font-extrabold text-white flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary inline-block"></span>
+                        {course}
+                      </span>
+                      <Link 
+                        to={`/contact?course=${encodeURIComponent(course)}`} 
+                        className="text-xs font-extrabold text-primary hover:underline"
+                      >
+                        Apply Now
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-4 border-t border-[#3F4147]">
+                <Link
+                  to="/programs"
+                  className="bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-xl font-heading font-bold text-sm transition-all shadow-md"
+                >
+                  Browse Full Course Catalog
+                </Link>
+                <button
+                  onClick={restartQuiz}
+                  className="bg-[#35373C] hover:bg-[#3F4147] text-neutral-200 border border-[#3F4147] px-6 py-4 rounded-xl font-semibold text-sm transition-all flex items-center gap-2"
+                >
+                  <RotateCcw className="w-4 h-4" /> Retake Quiz
+                </button>
+              </div>
+            </div>
+          )
+        )}
+
+        {/* Assistance Help */}
+        <div className="mt-8 text-center text-xs text-neutral-500 font-semibold">
+          Need personalized advice? Call our academic counselors at <a href="tel:+9779768808890" className="text-primary font-mono font-bold hover:underline">+977-9768808890</a> or chat via WhatsApp.
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AssessmentQuiz;

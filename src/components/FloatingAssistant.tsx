@@ -52,43 +52,43 @@ const FloatingAssistant = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50 flex flex-col items-end pointer-events-none">
       {/* Interactive Window */}
       {isOpen && (
-        <div className="w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden mb-4 pointer-events-auto transition-all duration-300 flex flex-col max-h-[500px]">
+        <div className="w-[calc(100vw-2rem)] sm:w-80 md:w-96 max-w-full bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden mb-3 md:mb-4 pointer-events-auto transition-all duration-300 flex flex-col max-h-[500px]">
           {/* Header - Soft Charcoal */}
-          <div className="bg-[#2B2D31] text-white p-4 flex items-center justify-between border-b border-[#3F4147]">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary flex items-center justify-center">
-                <UserCheck className="w-4 h-4 text-primary" />
+          <div className="bg-[#2B2D31] text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-[#3F4147]">
+            <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary/20 border border-primary flex items-center justify-center flex-shrink-0">
+                <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
               </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-heading font-bold text-sm text-white">Career & Program Advisor</span>
-                  <span className="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded font-mono font-bold">2026</span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
+                  <span className="font-heading font-bold text-[12px] sm:text-sm text-white truncate">Career & Program Advisor</span>
+                  <span className="bg-primary text-white text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded font-mono font-bold flex-shrink-0">2026</span>
                 </div>
-                <p className="text-[11px] text-neutral-400">Skill & Career Counseling</p>
+                <p className="text-[10px] sm:text-[11px] text-neutral-400 truncate">Skill & Career Counseling</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-neutral-400 hover:text-white transition-colors p-1"
+              className="text-neutral-400 hover:text-white transition-colors p-1 flex-shrink-0"
               aria-label="Close Assistant"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
 
           {/* Body */}
-          <div className="p-4 overflow-y-auto flex-grow bg-neutral-50/70 space-y-4 text-sm">
+          <div className="p-3 sm:p-4 overflow-y-auto flex-grow bg-neutral-50/70 space-y-3 sm:space-y-4 text-sm">
             {chatStep === 'welcome' && (
               <div className="space-y-3">
-                <div className="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-neutral-200/80 text-neutral-700 space-y-2">
-                  <p className="font-medium text-[#2B2D31]">Namaste! Welcome to Euro Training Center.</p>
-                  <p className="text-xs text-neutral-600">
+                <div className="bg-white p-3 sm:p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-neutral-200/80 text-neutral-700 space-y-2">
+                  <p className="font-medium text-[#2B2D31] text-[12px] sm:text-sm">Namaste! Welcome to Euro Training Center.</p>
+                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed">
                     As Nepal's premier <strong className="text-primary">Skill Development & Career Transformation Institute</strong>, we offer industry-aligned professional training programs.
                   </p>
-                  <p className="text-xs font-semibold text-[#2B2D31] pt-1">What is your primary career goal?</p>
+                  <p className="text-[11px] sm:text-xs font-semibold text-[#2B2D31] pt-1">What is your primary career goal?</p>
                 </div>
 
                 <div className="space-y-1.5 pt-1">
@@ -105,10 +105,10 @@ const FloatingAssistant = () => {
                         setSelectedProfile(item.id);
                         setChatStep('recommendation');
                       }}
-                      className="w-full text-left bg-white hover:bg-green-50 hover:border-green-200 border border-neutral-200 px-3 py-2.5 rounded-xl text-xs font-medium text-neutral-700 transition-all flex items-center justify-between group shadow-xs"
+                      className="w-full text-left bg-white hover:bg-green-50 hover:border-green-200 border border-neutral-200 px-2.5 sm:px-3 py-2.5 rounded-xl text-[11px] sm:text-xs font-medium text-neutral-700 transition-all flex items-center justify-between gap-2 group shadow-xs active:scale-[0.98] sm:active:scale-100"
                     >
-                      <span>{item.label}</span>
-                      <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-primary transition-colors" />
+                      <span className="leading-snug flex-1 min-w-0">{item.label}</span>
+                      <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-400 group-hover:text-primary transition-colors flex-shrink-0" />
                     </button>
                   ))}
                 </div>
@@ -117,20 +117,20 @@ const FloatingAssistant = () => {
 
             {chatStep === 'recommendation' && selectedProfile && (
               <div className="space-y-3">
-                <div className="bg-white p-3.5 rounded-2xl shadow-sm border border-neutral-200/80 text-neutral-700 space-y-3">
-                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-primary text-[11px] font-bold">
-                    <Award className="w-3.5 h-3.5" />
+                <div className="bg-white p-3 sm:p-3.5 rounded-2xl shadow-sm border border-neutral-200/80 text-neutral-700 space-y-3">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 text-primary text-[10px] sm:text-[11px] font-bold">
+                    <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
                     {profileRecommendations[selectedProfile].badge}
                   </div>
-                  <h4 className="font-heading font-bold text-[#2B2D31] text-sm">
+                  <h4 className="font-heading font-bold text-[#2B2D31] text-[13px] sm:text-sm leading-snug">
                     Recommendation for {profileRecommendations[selectedProfile].title}
                   </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed">
                     {profileRecommendations[selectedProfile].desc}
                   </p>
-                  <div className="p-3 bg-neutral-50 rounded-xl border border-neutral-100">
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-neutral-400 block mb-1">Top Recommended Program</span>
-                    <span className="text-xs font-bold text-primary block">
+                  <div className="p-2.5 sm:p-3 bg-neutral-50 rounded-xl border border-neutral-100">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-bold text-neutral-400 block mb-1">Top Recommended Program</span>
+                    <span className="text-[11px] sm:text-xs font-bold text-primary block leading-snug">
                       {profileRecommendations[selectedProfile].courseTitle}
                     </span>
                   </div>
@@ -140,13 +140,13 @@ const FloatingAssistant = () => {
                   <Link
                     to={profileRecommendations[selectedProfile].courseLink}
                     onClick={() => setIsOpen(false)}
-                    className="flex-1 bg-primary hover:bg-primary-hover text-white py-2 px-3 rounded-xl text-xs font-bold text-center transition-all shadow-sm flex items-center justify-center gap-1"
+                    className="flex-1 bg-primary hover:bg-primary-hover text-white py-2 px-2.5 sm:px-3 rounded-xl text-[11px] sm:text-xs font-bold text-center transition-all shadow-sm flex items-center justify-center gap-1 active:scale-[0.98] sm:active:scale-100"
                   >
-                    <BookOpen className="w-3.5 h-3.5" /> Explore Program
+                    <BookOpen className="w-3.5 h-3.5 flex-shrink-0" /> Explore Program
                   </Link>
                   <button
                     onClick={resetChat}
-                    className="bg-neutral-200 hover:bg-neutral-300 text-[#2B2D31] px-3 py-2 rounded-xl text-xs font-semibold transition-all"
+                    className="bg-neutral-200 hover:bg-neutral-300 text-[#2B2D31] px-2.5 sm:px-3 py-2 rounded-xl text-[11px] sm:text-xs font-semibold transition-all flex-shrink-0 active:scale-[0.98] sm:active:scale-100"
                   >
                     Back
                   </button>
@@ -156,16 +156,16 @@ const FloatingAssistant = () => {
           </div>
 
           {/* Footer Input / Support */}
-          <div className="p-3 bg-white border-t border-neutral-100">
-            <div className="flex items-center justify-between text-xs mb-2">
+          <div className="p-2.5 sm:p-3 bg-white border-t border-neutral-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[10px] sm:text-xs mb-2 gap-1.5 sm:gap-2">
               <span className="text-neutral-500 font-medium">Need instant admissions guidance?</span>
               <a
                 href="https://wa.me/9779768808890?text=Hello%20Euro%20Training%20Center,%20I%20am%20interested%20in%20your%202026%20courses."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline font-bold flex items-center gap-1"
+                className="text-primary hover:underline font-bold flex items-center gap-1 self-start sm:self-auto"
               >
-                <MessageCircle className="w-3.5 h-3.5 fill-current" /> WhatsApp Us
+                <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current flex-shrink-0" /> WhatsApp Us
               </a>
             </div>
             <div className="relative flex items-center">
@@ -179,14 +179,14 @@ const FloatingAssistant = () => {
                   }
                 }}
                 placeholder="Ask anything or search courses..."
-                className="w-full pl-3 pr-9 py-2 rounded-xl text-xs border border-neutral-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-neutral-50"
+                className="w-full pl-3 pr-9 py-2 rounded-xl text-[11px] sm:text-xs border border-neutral-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-neutral-50"
               />
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="absolute right-2 text-primary hover:text-primary-hover p-1"
+                className="absolute right-2 text-primary hover:text-primary-hover p-1 flex-shrink-0"
               >
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </Link>
             </div>
           </div>
@@ -194,23 +194,24 @@ const FloatingAssistant = () => {
       )}
 
       {/* Floating Buttons */}
-      <div className="flex items-center gap-3 pointer-events-auto">
+      <div className="flex items-center gap-2.5 md:gap-3 pointer-events-auto">
         <a
           href="https://wa.me/9779768808890?text=Hello%20Euro%20Training%20Center,%20I%20am%20interested%20in%20your%20training%20courses."
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-105"
+          className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-105 flex-shrink-0 active:scale-[0.98] sm:active:scale-100"
           title="Chat on WhatsApp"
         >
-          <MessageCircle className="w-6 h-6 fill-current" />
+          <MessageCircle className="w-5 h-5 md:w-6 md:h-6 fill-current" />
         </a>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="bg-[#2B2D31] hover:bg-[#35373C] text-white px-4 py-3 rounded-full font-heading font-semibold text-xs sm:text-sm shadow-xl flex items-center gap-2 border border-[#3F4147] transition-all"
+          className="bg-[#2B2D31] hover:bg-[#35373C] text-white px-3 sm:px-4 py-2.5 sm:py-3 rounded-full font-heading font-semibold text-[11px] sm:text-xs md:text-sm shadow-xl flex items-center gap-1.5 sm:gap-2 border border-[#3F4147] transition-all active:scale-[0.98] sm:active:scale-100"
         >
-          <UserCheck className="w-4 h-4 text-primary" />
-          <span>Career Advisor</span>
+          <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+          <span className="hidden sm:inline">Career Advisor</span>
+          <span className="sm:hidden">Advisor</span>
         </button>
       </div>
     </div>

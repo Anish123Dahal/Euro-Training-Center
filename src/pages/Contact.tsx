@@ -34,35 +34,35 @@ const Contact = () => {
   };
 
   return (
-    <div className="pb-16 min-h-screen bg-[#F7F8F8] bg-grid-pattern">
+    <div className="pb-16 min-h-screen bg-[#F7F8F8] bg-grid-pattern overflow-x-hidden">
       {/* Header Banner - Soft Charcoal */}
-      <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white py-12 sm:py-16 mb-16 border-b border-[#3F4147] text-center">
+      <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white py-10 md:py-12 sm:py-16 mb-10 md:mb-16 border-b border-[#3F4147] text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="bg-[#35373C] text-primary border border-primary/50 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-4">
+          <span className="bg-[#35373C] text-primary border border-primary/50 px-3 md:px-3.5 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-block mb-3 md:mb-4 max-w-full">
             Admissions & Student Support
           </span>
-          <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mb-4 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-extrabold text-white mb-3 md:mb-4 tracking-tight leading-tight">
             Contact Euro Training Center Nepal
           </h1>
-          <p className="text-neutral-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-neutral-300 text-sm md:text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Have questions about 2026 course syllabus, fees, class timings, or career placement? Visit our institute in Samakhusi or drop us a message below.
           </p>
         </div>
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Location Info & Contacts */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white p-8 rounded-3xl border border-neutral-200 shadow-sm space-y-6">
-              <h2 className="text-xl font-heading font-extrabold text-[#2B2D31] border-b border-neutral-100 pb-3">
+          <div className="lg:col-span-5 space-y-6 md:space-y-8 order-2 lg:order-1">
+            <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-200 shadow-sm space-y-5 md:space-y-6">
+              <h2 className="text-lg md:text-xl font-heading font-extrabold text-[#2B2D31] border-b border-neutral-100 pb-2 md:pb-3">
                 Institute Headquarters
               </h2>
 
-              <ul className="space-y-6 text-sm">
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
-                    <MapPin className="w-5 h-5" />
+              <ul className="space-y-4 md:space-y-6 text-sm">
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
+                    <MapPin className="w-4.5 h-4.5 md:w-5 md:h-5" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-[#2B2D31] text-sm mb-1">Visit Us In Person</h3>
@@ -73,34 +73,34 @@ const Contact = () => {
                   </div>
                 </li>
 
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
-                    <Phone className="w-5 h-5" />
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
+                    <Phone className="w-4.5 h-4.5 md:w-5 md:h-5" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-[#2B2D31] text-sm mb-1">Direct Call Helplines</h3>
                     <div className="flex flex-col text-xs font-mono">
-                      <a href="tel:+9779768808890" className="text-primary font-bold hover:underline">+977-9768808890</a>
+                      <a href="tel:+9779768808890" className="text-primary font-bold hover:underline break-all">+977-9768808890</a>
                       <a href="tel:014975711" className="text-neutral-600 hover:underline mt-0.5">01-4975711 (Landline)</a>
                     </div>
                   </div>
                 </li>
 
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
-                    <Mail className="w-5 h-5" />
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
+                    <Mail className="w-4.5 h-4.5 md:w-5 md:h-5" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-heading font-bold text-[#2B2D31] text-sm mb-1">Email Correspondence</h3>
-                    <a href="mailto:eurotraining2075@gmail.com" className="text-xs text-primary font-mono hover:underline break-all font-bold">
+                    <a href="mailto:eurotraining2075@gmail.com" className="text-xs text-primary font-mono hover:underline break-all font-bold block">
                       eurotraining2075@gmail.com
                     </a>
                   </div>
                 </li>
 
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
-                    <Clock className="w-5 h-5" />
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-green-50 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-green-100">
+                    <Clock className="w-4.5 h-4.5 md:w-5 md:h-5" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-[#2B2D31] text-sm mb-1">Institute Office Hours</h3>
@@ -113,18 +113,18 @@ const Contact = () => {
               </ul>
 
               {/* Direct WhatsApp Callout */}
-              <div className="p-4 bg-green-50 rounded-2xl border border-green-200 text-xs space-y-2">
+              <div className="p-3 md:p-4 bg-green-50 rounded-xl md:rounded-2xl border border-green-200 text-xs space-y-2">
                 <span className="font-extrabold text-primary flex items-center gap-1.5">
                   <MessageCircle className="w-4 h-4" /> Quick WhatsApp Support
                 </span>
-                <p className="text-neutral-600 font-medium">
+                <p className="text-neutral-600 font-medium leading-relaxed">
                   Chat directly with our admissions officer on WhatsApp for syllabus PDFs and fee structures.
                 </p>
                 <a
                   href="https://wa.me/9779768808890?text=Hello%20Euro%20Training%20Center,%20I%20want%20to%20know%20more%20about%202026%20course%20admission."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-primary text-white px-4 py-2 rounded-xl font-bold text-xs shadow-xs hover:bg-primary-hover transition-colors"
+                  className="inline-block w-full sm:w-auto text-center bg-primary text-white px-4 py-2.5 rounded-xl font-bold text-xs shadow-xs hover:bg-primary-hover transition-colors active:scale-[0.98] sm:active:scale-100"
                 >
                   Start WhatsApp Chat
                 </a>
@@ -133,21 +133,21 @@ const Contact = () => {
           </div>
 
           {/* Right Column: Online Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white p-8 sm:p-10 rounded-3xl border border-neutral-200 shadow-xl">
-              <h2 className="text-2xl font-heading font-extrabold text-[#2B2D31] mb-2">
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="bg-white p-5 sm:p-6 sm:p-8 sm:p-10 rounded-2xl md:rounded-3xl border border-neutral-200 shadow-xl">
+              <h2 className="text-xl md:text-2xl font-heading font-extrabold text-[#2B2D31] mb-2 leading-tight">
                 Send Inquiry or Enroll Online
               </h2>
-              <p className="text-xs sm:text-sm text-neutral-500 mb-8 font-medium">
+              <p className="text-xs sm:text-sm text-neutral-500 mb-6 md:mb-8 font-medium leading-relaxed">
                 Fill in your details and select your desired training program. We will reach out with fees, syllabus brochure, and class shift options.
               </p>
 
               {isSubmitted ? (
-                <div className="bg-green-50 border border-green-200 p-8 rounded-2xl text-center space-y-4">
-                  <CheckCircle className="w-12 h-12 text-primary mx-auto" />
-                  <h3 className="text-xl font-heading font-extrabold text-[#2B2D31]">Thank You, {fullName}!</h3>
+                <div className="bg-green-50 border border-green-200 p-6 md:p-8 rounded-xl md:rounded-2xl text-center space-y-4">
+                  <CheckCircle className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto" />
+                  <h3 className="text-lg md:text-xl font-heading font-extrabold text-[#2B2D31]">Thank You, {fullName}!</h3>
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md mx-auto font-medium">
-                    Your inquiry regarding <strong className="text-primary font-bold">{selectedCourse || "Euro Training Courses"}</strong> has been submitted. An academic advisor will contact your phone (<strong>{phone}</strong>) shortly.
+                    Your inquiry regarding <strong className="text-primary font-bold">{selectedCourse || "Euro Training Courses"}</strong> has been submitted. An academic advisor will contact your phone (<strong className="break-all">{phone}</strong>) shortly.
                   </p>
                   <button
                     onClick={() => { setIsSubmitted(false); setFullName(''); setPhone(''); setEmail(''); setMessage(''); }}
@@ -157,10 +157,10 @@ const Contact = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     <div>
-                      <label className="block text-xs font-extrabold text-neutral-700 mb-2">Full Name *</label>
+                      <label className="block text-xs font-extrabold text-neutral-700 mb-1.5 md:mb-2">Full Name *</label>
                       <input
                         type="text"
                         required
@@ -171,7 +171,7 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-extrabold text-neutral-700 mb-2">Phone / WhatsApp Number *</label>
+                      <label className="block text-xs font-extrabold text-neutral-700 mb-1.5 md:mb-2">Phone / WhatsApp Number *</label>
                       <input
                         type="tel"
                         required
@@ -183,9 +183,9 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     <div>
-                      <label className="block text-xs font-extrabold text-neutral-700 mb-2">Email Address (Optional)</label>
+                      <label className="block text-xs font-extrabold text-neutral-700 mb-1.5 md:mb-2">Email Address (Optional)</label>
                       <input
                         type="email"
                         value={email}
@@ -195,7 +195,7 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-extrabold text-neutral-700 mb-2">Select Program of Interest</label>
+                      <label className="block text-xs font-extrabold text-neutral-700 mb-1.5 md:mb-2">Select Program of Interest</label>
                       <select
                         value={selectedCourse}
                         onChange={(e) => setSelectedCourse(e.target.value)}
@@ -219,7 +219,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-extrabold text-neutral-700 mb-2">Message or Special Requirements</label>
+                    <label className="block text-xs font-extrabold text-neutral-700 mb-1.5 md:mb-2">Message or Special Requirements</label>
                     <textarea
                       rows={4}
                       value={message}
@@ -231,7 +231,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-9 py-4 bg-primary hover:bg-primary-hover text-white font-heading font-extrabold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-6 md:px-9 py-3.5 md:py-4 bg-primary hover:bg-primary-hover text-white font-heading font-extrabold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.98] sm:active:scale-100"
                   >
                     <span>Send Online Inquiry / Application</span>
                     <Send className="w-4 h-4" />

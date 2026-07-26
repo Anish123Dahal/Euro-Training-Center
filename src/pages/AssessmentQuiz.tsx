@@ -128,17 +128,17 @@ const AssessmentQuiz = () => {
   const resultData = isCompleted ? getResult() : null;
 
   return (
-    <div className="pb-16 min-h-screen bg-[#F7F8F8] bg-grid-pattern">
+    <div className="pb-12 md:pb-16 min-h-screen bg-[#F7F8F8] bg-grid-pattern overflow-x-hidden">
       {/* Header Banner - Soft Charcoal */}
-      <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white py-12 sm:py-14 mb-12 border-b border-[#3F4147] text-center">
+      <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white py-10 sm:py-12 md:py-14 mb-8 md:mb-12 border-b border-[#3F4147] text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="bg-[#35373C] text-primary border border-primary/50 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-4">
+          <span className="bg-[#35373C] text-primary border border-primary/50 px-3 py-1 sm:px-3.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest inline-block mb-3 sm:mb-4">
             2026 Career Diagnostic Tool
           </span>
-          <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mb-4 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-extrabold text-white mb-3 sm:mb-4 tracking-tight leading-tight">
             Career Assessment Quiz
           </h1>
-          <p className="text-neutral-300 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-neutral-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Not sure which course best suits your skillset? Answer 4 quick questions and our diagnostic engine will match you with your ideal professional transformation program.
           </p>
         </div>
@@ -146,10 +146,10 @@ const AssessmentQuiz = () => {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {!isCompleted ? (
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-neutral-200">
+          <div className="bg-white rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 md:sm:p-12 shadow-xl border border-neutral-200">
             {/* Progress Bar */}
-            <div className="mb-8">
-              <div className="flex justify-between text-xs font-extrabold text-[#2B2D31] mb-2">
+            <div className="mb-6 md:mb-8">
+              <div className="flex justify-between text-[11px] md:text-xs font-extrabold text-[#2B2D31] mb-2">
                 <span>Question {currentStep + 1} of {questions.length}</span>
                 <span>{Math.round(((currentStep + 1) / questions.length) * 100)}% Complete</span>
               </div>
@@ -162,31 +162,29 @@ const AssessmentQuiz = () => {
             </div>
 
             {/* Question */}
-            <div className="mb-8">
-              <h2 className="text-2xl font-heading font-extrabold text-[#2B2D31] mb-2">
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-extrabold text-[#2B2D31] mb-2 leading-tight">
                 {questions[currentStep].question}
               </h2>
-              <p className="text-xs sm:text-sm text-neutral-500 font-medium">
+              <p className="text-[11px] sm:text-xs md:text-sm text-neutral-500 font-medium leading-relaxed">
                 {questions[currentStep].subtitle}
               </p>
             </div>
 
             {/* Options */}
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {questions[currentStep].options.map((option, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(option.points)}
-                  className="w-full text-left p-5 rounded-2xl bg-[#F7F8F8] border border-neutral-200 hover:border-primary hover:bg-green-50/50 transition-all flex items-center justify-between group shadow-xs"
+                  className="w-full text-left p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl bg-[#F7F8F8] border border-neutral-200 hover:border-primary hover:bg-green-50/50 transition-all flex items-start gap-3 md:gap-4 group shadow-xs active:scale-[0.98] sm:active:scale-100"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className="p-2.5 rounded-xl bg-white border border-neutral-200 flex-shrink-0">
-                      {option.icon}
-                    </span>
-                    <span className="text-sm font-extrabold text-[#2B2D31] group-hover:text-primary transition-colors leading-relaxed">
-                      {option.label}
-                    </span>
-                  </div>
+                  <span className="p-2 rounded-xl md:p-2.5 bg-white border border-neutral-200 flex-shrink-0">
+                    {option.icon}
+                  </span>
+                  <span className="text-xs sm:text-sm md:text-sm font-extrabold text-[#2B2D31] group-hover:text-primary transition-colors leading-relaxed pt-0.5">
+                    {option.label}
+                  </span>
                 </button>
               ))}
             </div>
@@ -194,37 +192,37 @@ const AssessmentQuiz = () => {
         ) : (
           /* Result Showcase */
           resultData && (
-            <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-[#3F4147] text-center space-y-8">
-              <div className="w-16 h-16 bg-primary/20 border-2 border-primary rounded-3xl mx-auto flex items-center justify-center text-primary shadow-md">
-                <CheckCircle className="w-9 h-9" />
+            <div className="bg-[#2B2D31] bg-grid-pattern-dark text-white rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 md:sm:p-12 shadow-2xl border border-[#3F4147] text-center space-y-6 md:space-y-8">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-primary/20 border-2 border-primary rounded-2xl md:rounded-3xl mx-auto flex items-center justify-center text-primary shadow-md">
+                <CheckCircle className="w-7 h-7 md:w-9 md:h-9" />
               </div>
 
-              <div className="space-y-3">
-                <span className="bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest inline-block shadow-xs">
+              <div className="space-y-2 md:space-y-3">
+                <span className="bg-primary text-white text-[11px] md:text-xs font-bold px-3 md:px-4 py-1 rounded-full uppercase tracking-widest inline-block shadow-xs">
                   {resultData.badge}
                 </span>
-                <h2 className="text-2xl sm:text-4xl font-heading font-extrabold text-white">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-heading font-extrabold text-white leading-tight">
                   {resultData.title}
                 </h2>
-                <p className="text-neutral-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium pt-2">
+                <p className="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto font-medium pt-1 md:pt-2">
                   {resultData.desc}
                 </p>
               </div>
 
-              <div className="bg-[#35373C] p-6 rounded-2xl border border-[#3F4147] text-left space-y-3">
-                <span className="text-xs font-bold text-primary uppercase tracking-widest block flex items-center gap-1.5">
-                  <BookOpen className="w-4 h-4" /> Top Recommended Programs For You:
+              <div className="bg-[#35373C] p-4 sm:p-5 md:p-6 rounded-xl md:rounded-2xl border border-[#3F4147] text-left space-y-3">
+                <span className="text-[11px] md:text-xs font-bold text-primary uppercase tracking-widest block flex items-center gap-1.5">
+                  <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4" /> Top Recommended Programs For You:
                 </span>
-                <div className="grid grid-cols-1 gap-2.5">
+                <div className="grid grid-cols-1 gap-2 md:gap-2.5">
                   {resultData.courses.map((course, i) => (
-                    <div key={i} className="bg-[#2B2D31] p-3.5 rounded-xl border border-[#3F4147] flex items-center justify-between">
-                      <span className="text-sm font-extrabold text-white flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-primary inline-block"></span>
-                        {course}
+                    <div key={i} className="bg-[#2B2D31] p-3 md:p-3.5 rounded-xl border border-[#3F4147] flex items-start md:items-center justify-between gap-3">
+                      <span className="text-xs sm:text-sm md:text-sm font-extrabold text-white flex items-start gap-2 leading-snug">
+                        <span className="w-2 h-2 rounded-full bg-primary inline-block mt-1 flex-shrink-0"></span>
+                        <span>{course}</span>
                       </span>
                       <Link 
                         to={`/contact?course=${encodeURIComponent(course)}`} 
-                        className="text-xs font-extrabold text-primary hover:underline"
+                        className="text-[11px] md:text-xs font-extrabold text-primary hover:underline flex-shrink-0"
                       >
                         Apply Now
                       </Link>
@@ -233,16 +231,16 @@ const AssessmentQuiz = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-4 border-t border-[#3F4147]">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 md:gap-4 pt-4 border-t border-[#3F4147]">
                 <Link
                   to="/programs"
-                  className="bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-xl font-heading font-bold text-sm transition-all shadow-md"
+                  className="w-full sm:w-auto bg-primary hover:bg-primary-hover text-white px-6 md:px-8 py-3.5 md:py-4 rounded-xl font-heading font-bold text-xs sm:text-sm transition-all shadow-md text-center active:scale-[0.98] sm:active:scale-100"
                 >
                   Browse Full Course Catalog
                 </Link>
                 <button
                   onClick={restartQuiz}
-                  className="bg-[#35373C] hover:bg-[#3F4147] text-neutral-200 border border-[#3F4147] px-6 py-4 rounded-xl font-semibold text-sm transition-all flex items-center gap-2"
+                  className="w-full sm:w-auto bg-[#35373C] hover:bg-[#3F4147] text-neutral-200 border border-[#3F4147] px-5 md:px-6 py-3.5 md:py-4 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 active:scale-[0.98] sm:active:scale-100"
                 >
                   <RotateCcw className="w-4 h-4" /> Retake Quiz
                 </button>
@@ -252,8 +250,8 @@ const AssessmentQuiz = () => {
         )}
 
         {/* Assistance Help */}
-        <div className="mt-8 text-center text-xs text-neutral-500 font-semibold">
-          Need personalized advice? Call our academic counselors at <a href="tel:+9779768808890" className="text-primary font-mono font-bold hover:underline">+977-9768808890</a> or chat via WhatsApp.
+        <div className="mt-6 md:mt-8 text-center text-[11px] md:text-xs text-neutral-500 font-semibold leading-relaxed px-2">
+          Need personalized advice? Call our academic counselors at <a href="tel:+9779768808890" className="text-primary font-mono font-bold hover:underline whitespace-nowrap">+977-9768808890</a> or chat via WhatsApp.
         </div>
       </div>
     </div>

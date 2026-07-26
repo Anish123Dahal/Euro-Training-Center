@@ -46,11 +46,24 @@ h1, h2, h3, h4, h5, h6 {
 html {
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   height: 100%;
   margin: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Hide scrollbar utility (used for horizontal category scroller) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Background Grid Design System */
